@@ -112,14 +112,22 @@ const BattleCard: React.FC<{ battle: Battle; onClick: () => void }> = ({ battle,
         <div className="absolute inset-0 flex">
             {/* Left Image */}
             <div className="flex-1 relative">
-                <img src={`https://picsum.photos/seed/${battle.participant1.username}/400/600`} className="w-full h-full object-cover opacity-90 transition-opacity group-hover:opacity-100" alt="" />
+                <img
+                  src={battle.participant1.avatarUrl}
+                  className="w-full h-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+                  alt=""
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
             </div>
             {/* Right Image */}
             <div className="flex-1 relative bg-surface">
                  {battle.participant2 ? (
                     <>
-                    <img src={`https://picsum.photos/seed/${battle.participant2.username}/400/600`} className="w-full h-full object-cover opacity-90 transition-opacity group-hover:opacity-100" alt="" />
+                    <img
+                      src={battle.participant2.avatarUrl}
+                      className="w-full h-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+                      alt=""
+                    />
                     <div className="absolute inset-0 bg-gradient-to-l from-black/60 to-transparent"></div>
                     </>
                  ) : (

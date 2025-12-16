@@ -1,8 +1,10 @@
 import { Battle, Notification, RankingEntry, User } from '@/types';
 
-// Helper to generate placeholder images
-const getAvatar = (id: number) => `https://picsum.photos/seed/user${id}/200/200`;
-const getCover = (id: number) => `https://picsum.photos/seed/cover${id}/800/600`;
+// Helper to generate placeholder images (Unsplash, более надёжно для продакшена)
+const getAvatar = (id: number) =>
+  `https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=facearea&w=200&h=200&q=80&facepad=2&sat=-15&sig=${id}`;
+const getCover = (id: number) =>
+  `https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&h=600&q=80&sat=-15&sig=${id}`;
 
 export const CURRENT_USER: User = {
   id: 'u1',
