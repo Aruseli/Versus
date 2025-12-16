@@ -17,7 +17,7 @@ export default function Home() {
 
   const handleAuthenticated = () => {
     // После авторизации перенаправляем на главную страницу авторизованного пользователя
-    router.push('/');
+    router.push('/home');
   };
 
   if (appState === 'splash') {

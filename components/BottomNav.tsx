@@ -31,7 +31,7 @@ export const BottomNav = () => {
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[380px] z-50">
         <div className="bg-surfaceLight/80 backdrop-blur-xl border border-white/10 rounded-4xl h-[72px] px-6 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-            <NavItem to="/" icon={IconHome} activePaths={['/', '/home']} />
+            <NavItem to="/home" icon={IconHome} activePaths={['/home']} />
             <NavItem to="/ranking" icon={IconTrophy} activePaths={['/ranking']} />
             
             {/* Modern Create Button */}
