@@ -13,7 +13,7 @@ export default function HomeScreen() {
 
   const filteredBattles = MOCK_BATTLES.filter(b => {
     if (activeTab === 'competition') return b.status === 'active';
-    if (activeTab === 'participation') return b.status === 'waiting' || b.participant1.username === 'Beckhan_Dukaev' || b.participant2?.username === 'Beckhan_Dukaev';
+    if (activeTab === 'participation') return b.status === 'waiting' || b.participant1.username === 'Игрок1' || b.participant2?.username === 'Игрок1';
     if (activeTab === 'results') return b.status === 'finished';
     return true;
   });

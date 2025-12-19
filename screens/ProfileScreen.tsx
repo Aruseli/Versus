@@ -10,7 +10,7 @@ export const ProfileScreen = () => {
 
   // Filter user's battles
   const userBattles = MOCK_BATTLES.filter(b => 
-    b.participant1.username === 'Beckhan_Dukaev' || b.participant2?.username === 'Beckhan_Dukaev'
+    b.participant1.username === 'Игрок1' || b.participant2?.username === 'Игрок1'
   );
 
   return (
@@ -45,7 +45,7 @@ export const ProfileScreen = () => {
                  </div>
                  {/* Online Status or Rank Badge could go here */}
              </div>
-             <h2 className="text-2xl font-bold text-white tracking-tight mb-0.5">Beckhan_Dukaev</h2>
+             <h2 className="text-2xl font-bold text-white tracking-tight mb-0.5">{CURRENT_USER.username}</h2>
              <p className="text-zinc-400 text-sm">Professional CrossFit Athlete</p>
          </div>
       </div>
