@@ -65,7 +65,11 @@ export default function BattleDetailScreen() {
                     </div>
                 </div>
                 <span className="text-xs font-bold text-center mb-3">{battle.participant1.username}</span>
-                <button className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded-full text-xs hover:bg-zinc-700 transition">
+                <button 
+                  onClick={() => router.push(`/battle/${battle.id}/video`)}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded-full text-xs hover:bg-zinc-700 transition touch-manipulation"
+                  style={{ minHeight: '44px' }}
+                >
                     <IconPlay size={10} className="text-green-500 fill-green-500" /> Video
                 </button>
             </div>
@@ -84,7 +88,11 @@ export default function BattleDetailScreen() {
                     </div>
                 </div>
                 <span className="text-xs font-bold text-center mb-3">{battle.participant2?.username}</span>
-                <button className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded-full text-xs hover:bg-zinc-700 transition">
+                <button 
+                  onClick={() => router.push(`/battle/${battle.id}/video`)}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded-full text-xs hover:bg-zinc-700 transition touch-manipulation"
+                  style={{ minHeight: '44px' }}
+                >
                     <IconPlay size={10} className="text-red-500 fill-red-500" /> Video
                 </button>
             </div>

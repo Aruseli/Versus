@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { MOCK_RANKING } from '@/constants';
 import { IconChevronDown } from '@/components/Icons'; 
 import { Avatar } from '@/components/Shared';
@@ -16,6 +17,7 @@ const TrendIcon = ({ trend }: { trend: 'up'|'down'|'same' }) => {
 }
 
 export const RankingScreen = () => {
+  const router = useRouter();
   const topThree = [MOCK_RANKING[1], MOCK_RANKING[0], MOCK_RANKING[2]]; // Order: 2nd, 1st, 3rd visually
   const rest = MOCK_RANKING.slice(3);
   const userRank = MOCK_RANKING.find(r => r.user.id === 'p2'); 
@@ -26,7 +28,11 @@ export const RankingScreen = () => {
 
       {/* Filter - Minimalist */}
       <div className="relative mb-10">
-        <button className="w-full flex items-center justify-between bg-surfaceLight/50 backdrop-blur-sm border border-white/5 rounded-2xl px-5 py-4 text-sm font-medium transition-colors hover:bg-surfaceLight/80">
+        <button 
+          onClick={() => router.push('/ranking/filter')}
+          className="w-full flex items-center justify-between bg-surfaceLight/50 backdrop-blur-sm border border-white/5 rounded-2xl px-5 py-4 text-sm font-medium transition-colors hover:bg-surfaceLight/80 touch-manipulation"
+          style={{ minHeight: '44px' }}
+        >
             <span className="truncate pr-4 text-zinc-200">CrossFit: Men's Light-Heavyweight</span>
             <IconChevronDown size={16} className="text-muted shrink-0" />
         </button>
@@ -67,7 +73,11 @@ export const RankingScreen = () => {
 
       {/* My Rank */}
       {userRank && (
-        <div className="bg-primary/10 border border-primary/20 rounded-2xl p-4 flex items-center justify-between mb-8">
+        <button
+          onClick={() => router.push('/ranking/position')}
+          className="w-full bg-primary/10 border border-primary/20 rounded-2xl p-4 flex items-center justify-between mb-8 touch-manipulation hover:bg-primary/15 transition-colors"
+          style={{ minHeight: '44px' }}
+        >
             <div className="flex items-center gap-3">
                 <span className="font-bold text-lg text-primary">{userRank.rank}</span>
                 <div className="w-[1px] h-6 bg-primary/20"></div>
@@ -76,7 +86,7 @@ export const RankingScreen = () => {
             <div className="flex items-center gap-2 px-2 py-1 bg-primary/20 rounded-md">
                  <TrendIcon trend={userRank.trend} />
             </div>
-        </div>
+        </button>
       )}
 
       {/* List */}

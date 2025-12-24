@@ -50,3 +50,26 @@ export type PresetRule = {
   description: string;
   discipline: Discipline;
 };
+
+export type Vote = {
+  id: string;
+  battleId: string;
+  voterId: string;
+  votedFor: string; // participantId
+  timestamp: Date;
+};
+
+export type VotingResult = {
+  battleId: string;
+  participant1Votes: number;
+  participant2Votes: number;
+  totalVotes: number;
+  winnerId?: string;
+};
+
+export type SearchFilters = {
+  query?: string;
+  categories?: string[];
+  statuses?: BattleStatus[];
+  sortBy?: 'date' | 'popularity' | 'status';
+};

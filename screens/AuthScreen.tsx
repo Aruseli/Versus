@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { VsLogo } from '@/components/Icons';
 import { Button } from '@/components/Shared';
+import { Input } from '@/components/Input';
 
 interface AuthScreenProps {
   onAuthenticated: () => void;
@@ -67,16 +68,14 @@ export const AuthScreen = ({ onAuthenticated }: AuthScreenProps) => {
                 <p className="text-zinc-400 text-sm mb-6">Enter your phone number or email to continue.</p>
                 
                 <form onSubmit={handleSendCode} className="flex flex-col gap-4">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      placeholder="Email or Phone"
-                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-zinc-500 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
-                      required
-                    />
-                  </div>
+                  <Input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Email or Phone"
+                    className="bg-black/20 border-white/10 rounded-xl"
+                    required
+                  />
                   
                   <Button 
                     type="submit" 

@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { IconMessage, IconSearch, IconFilter, VsLogo, IconGroup, IconTrend } from '../components/Icons';
+import { IconMessage, IconFilter, VsLogo, IconGroup, IconTrend } from '../components/Icons';
 import { StoryCircle, Avatar } from '../components/Shared';
+import { Input } from '../components/Input';
 import { MOCK_STORIES, MOCK_BATTLES } from '../constants';
 import { Battle, TabType } from '@/types';
 
@@ -32,16 +33,20 @@ export default function HomeScreen() {
       </div>
       
       {/* Search - Modern Input */}
-      <div className="relative mb-8">
-        <IconSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-muted" size={18} />
-        <input 
-          type="text" 
-          placeholder="Search for battles, users..." 
-          className="w-full bg-surfaceLight/50 backdrop-blur-sm border border-white/5 rounded-2xl py-3.5 pl-11 pr-12 text-sm text-white placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all shadow-sm"
+      <div className="mb-8">
+        <Input
+          leftIcon="search"
+          placeholder="Search for battles, users..."
+          rightElement={
+            <button 
+              onClick={() => router.push('/search')}
+              className="p-1.5 hover:bg-white/5 rounded-lg transition-colors touch-manipulation"
+              style={{ minHeight: '44px', minWidth: '44px' }}
+            >
+              <IconFilter size={16} className="text-zinc-400" />
+            </button>
+          }
         />
-        <button className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 hover:bg-white/5 rounded-lg transition-colors">
-            <IconFilter size={16} className="text-zinc-400" />
-        </button>
       </div>
 
       {/* Modern Segmented Control Tabs */}
@@ -86,7 +91,10 @@ export default function HomeScreen() {
         {filteredBattles.length === 0 && (
             <div className="flex flex-col items-center justify-center py-16 text-muted">
                 <div className="w-16 h-16 bg-surfaceLight rounded-full flex items-center justify-center mb-4">
-                    <IconSearch size={24} className="opacity-50" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
                 </div>
                 <p>No competitions found</p>
             </div>

@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { CURRENT_USER, MOCK_BATTLES } from '@/constants';
-import { IconMore, IconPlus, IconSearch, IconGroup } from '@/components/Icons';
+import { IconMore, IconPlus, IconGroup } from '@/components/Icons';
+import { Input } from '@/components/Input';
 import { ProfileTabType } from '@/types';
 
 export const ProfileScreen = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<ProfileTabType>('competition');
 
   // Filter user's battles
@@ -75,14 +78,11 @@ export const ProfileScreen = () => {
 
       {/* Search Bar - Modern Style */}
       <div className="px-5 mt-6">
-        <div className="relative group">
-            <IconSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-muted group-focus-within:text-white transition-colors" size={16} />
-            <input 
-                type="text" 
-                placeholder="Search history..." 
-                className="w-full bg-surfaceLight/50 backdrop-blur-sm border border-white/5 rounded-2xl py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all placeholder-zinc-500"
-            />
-        </div>
+        <Input
+          leftIcon="search"
+          placeholder="Search history..."
+          size="sm"
+        />
       </div>
 
       {/* Modern Tabs */}
@@ -107,7 +107,8 @@ export const ProfileScreen = () => {
       {/* Content List */}
       <div className="mt-6 px-5 flex flex-col gap-4">
         {activeTab === 'competition' && (
-             userBattles.map(battle => (
+          <>
+            {userBattles.slice(0, 3).map(battle => (
                 <div key={battle.id} className="group flex items-center gap-4 p-3 rounded-2xl bg-transparent hover:bg-surfaceLight/30 border border-transparent hover:border-white/5 transition-all cursor-pointer">
                     <div className="relative flex-shrink-0 w-14 h-14">
                         <img src={`https://picsum.photos/seed/${battle.participant1.username}/100/100`} className="w-full h-full rounded-2xl object-cover ring-1 ring-white/10" alt="" />
@@ -133,45 +134,73 @@ export const ProfileScreen = () => {
                         </div>
                     </div>
                 </div>
-            ))
+            ))}
+            {userBattles.length > 3 && (
+              <button
+                onClick={() => router.push('/profile/competitions')}
+                className="text-center py-3 text-primary font-medium text-sm touch-manipulation"
+                style={{ minHeight: '44px' }}
+              >
+                Показать все ({userBattles.length})
+              </button>
+            )}
+          </>
         )}
 
         {activeTab === 'awards' && (
+          <>
             <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-surfaceLight/20 border border-white/5">
-                    <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center text-2xl border border-amber-500/20">🏆</div>
-                    <div>
-                        <h4 className="font-bold text-zinc-100">CrossFit</h4>
-                        <p className="text-xs text-zinc-400">Team of the Month</p>
-                    </div>
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-surfaceLight/20 border border-white/5">
+                <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center text-2xl border border-amber-500/20">🏆</div>
+                <div>
+                  <h4 className="font-bold text-zinc-100">CrossFit</h4>
+                  <p className="text-xs text-zinc-400">Team of the Month</p>
                 </div>
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-surfaceLight/20 border border-white/5">
-                    <div className="w-12 h-12 rounded-full bg-zinc-700/30 flex items-center justify-center text-2xl border border-white/10">🥇</div>
-                    <div>
-                        <h4 className="font-bold text-zinc-100">Clean & Jerk</h4>
-                        <p className="text-xs text-zinc-400">Rank #1 (89-96 kg)</p>
-                    </div>
+              </div>
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-surfaceLight/20 border border-white/5">
+                <div className="w-12 h-12 rounded-full bg-zinc-700/30 flex items-center justify-center text-2xl border border-white/10">🥇</div>
+                <div>
+                  <h4 className="font-bold text-zinc-100">Clean & Jerk</h4>
+                  <p className="text-xs text-zinc-400">Rank #1 (89-96 kg)</p>
                 </div>
+              </div>
             </div>
+            <button
+              onClick={() => router.push('/profile/awards')}
+              className="text-center py-3 text-primary font-medium text-sm touch-manipulation"
+              style={{ minHeight: '44px' }}
+            >
+              Показать все ачивки
+            </button>
+          </>
         )}
         
         {activeTab === 'ranking' && (
-             <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-4 p-3 rounded-2xl bg-surfaceLight/20 border border-white/5">
-                     <div className="w-10 h-10 rounded-full border-2 border-amber-400/50 bg-amber-400/10 flex items-center justify-center font-bold text-amber-400 text-lg shadow-[0_0_15px_rgba(251,191,36,0.2)]">1</div>
-                     <div>
-                         <h4 className="font-bold text-zinc-200">Clean and jerk</h4>
-                         <p className="text-xs text-zinc-500">Men's Light-Heavyweight (89-96 kg)</p>
-                     </div>
+          <>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-4 p-3 rounded-2xl bg-surfaceLight/20 border border-white/5">
+                <div className="w-10 h-10 rounded-full border-2 border-amber-400/50 bg-amber-400/10 flex items-center justify-center font-bold text-amber-400 text-lg shadow-[0_0_15px_rgba(251,191,36,0.2)]">1</div>
+                <div>
+                  <h4 className="font-bold text-zinc-200">Clean and jerk</h4>
+                  <p className="text-xs text-zinc-500">Men's Light-Heavyweight (89-96 kg)</p>
                 </div>
-                 <div className="flex items-center gap-4 p-3 rounded-2xl bg-surfaceLight/20 border border-white/5">
-                     <div className="w-10 h-10 rounded-full border-2 border-zinc-600 bg-zinc-800 flex items-center justify-center font-bold text-zinc-400 text-lg">7</div>
-                     <div>
-                         <h4 className="font-bold text-zinc-200">Walking on hands</h4>
-                         <p className="text-xs text-zinc-500">Open weight</p>
-                     </div>
+              </div>
+              <div className="flex items-center gap-4 p-3 rounded-2xl bg-surfaceLight/20 border border-white/5">
+                <div className="w-10 h-10 rounded-full border-2 border-zinc-600 bg-zinc-800 flex items-center justify-center font-bold text-zinc-400 text-lg">7</div>
+                <div>
+                  <h4 className="font-bold text-zinc-200">Walking on hands</h4>
+                  <p className="text-xs text-zinc-500">Open weight</p>
                 </div>
-             </div>
+              </div>
+            </div>
+            <button
+              onClick={() => router.push('/profile/ranking')}
+              className="text-center py-3 text-primary font-medium text-sm touch-manipulation"
+              style={{ minHeight: '44px' }}
+            >
+              Показать все позиции
+            </button>
+          </>
         )}
       </div>
     </div>

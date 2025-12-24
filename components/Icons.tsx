@@ -17,7 +17,11 @@ import {
   Triangle,
   Play,
   Users,
-  Swords
+  Swords,
+  Pause,
+  Volume2,
+  VolumeX,
+  Maximize
 } from 'lucide-react';
 
 export const IconHome = Home;
@@ -37,6 +41,10 @@ export const IconChevronDown = ChevronDown;
 export const IconTrend = Triangle;
 export const IconPlay = Play;
 export const IconGroup = Users;
+export const IconPause = Pause;
+export const IconVolume2 = Volume2;
+export const IconVolumeX = VolumeX;
+export const IconMaximize = Maximize;
 
 // New Minimalist Logo
 export const VsLogo = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) => {
