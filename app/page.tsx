@@ -16,8 +16,13 @@ export default function Home() {
   };
 
   const handleAuthenticated = () => {
-    // После авторизации перенаправляем на главную страницу авторизованного пользователя
-    router.push('/home');
+    // После авторизации проверяем, нужен ли onboarding
+    const needsOnboarding = typeof window !== 'undefined' && !localStorage.getItem('onboarding_completed');
+    if (needsOnboarding) {
+      router.push('/onboarding/intro');
+    } else {
+      router.push('/home');
+    }
   };
 
   if (appState === 'splash') {

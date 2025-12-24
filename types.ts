@@ -40,3 +40,13 @@ export type RankingEntry = {
 
 export type TabType = 'competition' | 'participation' | 'results';
 export type ProfileTabType = 'competition' | 'awards' | 'ranking';
+
+export type Discipline = 'CrossFit' | 'Basketball' | 'Intellectual' | 'Weightlifting' | 'Running' | 'Yoga' | 'MartialArts' | 'Swimming';
+export type Level = 'Beginner' | 'Intermediate' | 'Advanced' | 'Pro';
+
+export type PresetRule = {
+  id: string;
+  name: string;
+  description: string;
+  discipline: Discipline;
+};
