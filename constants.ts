@@ -74,7 +74,7 @@ export const MOCK_NOTIFICATIONS: Notification[] = [
   { id: 'n3', user: { id: 'n_u3', username: 'Система', avatarUrl: getAvatar(22) }, message: 'The status of the competition has changed', time: '07:24', isRead: true },
 ];
 
-import { Discipline } from '@/types';
+import { Discipline, PresetRule } from '@/types';
 
 export const DISCIPLINES: { value: Discipline; label: string; description: string; icon: string }[] = [
   { value: 'CrossFit', label: 'CrossFit', description: 'Функциональный фитнес и силовые тренировки', icon: '💪' },
@@ -117,5 +117,208 @@ export const FAIR_PLAY_RULES = [
     title: 'Один аккаунт — один человек',
     description: 'Не используй несколько аккаунтов для участия в одних и тех же соревнованиях.',
     icon: '👤'
+  },
+];
+
+export const PRESET_RULES: PresetRule[] = [
+  // CrossFit
+  {
+    id: 'cf1',
+    name: 'Max reps in 60s',
+    description: 'Максимальное количество повторений за 60 секунд',
+    discipline: 'CrossFit',
+  },
+  {
+    id: 'cf2',
+    name: '1RM Clean and Jerk',
+    description: 'Одноповторный максимум в толчке',
+    discipline: 'CrossFit',
+  },
+  {
+    id: 'cf3',
+    name: 'AMRAP 5 minutes',
+    description: 'Как можно больше раундов за 5 минут',
+    discipline: 'CrossFit',
+  },
+  {
+    id: 'cf4',
+    name: 'Burpee Challenge',
+    description: 'Максимальное количество бёрпи за 3 минуты',
+    discipline: 'CrossFit',
+  },
+  // Basketball
+  {
+    id: 'bb1',
+    name: '3-point contest',
+    description: 'Конкурс трёхочковых бросков (10 попыток)',
+    discipline: 'Basketball',
+  },
+  {
+    id: 'bb2',
+    name: 'Free throws',
+    description: 'Штрафные броски (20 попыток)',
+    discipline: 'Basketball',
+  },
+  {
+    id: 'bb3',
+    name: 'Slam dunk',
+    description: 'Самый эффектный слэм-данк',
+    discipline: 'Basketball',
+  },
+  {
+    id: 'bb4',
+    name: 'Dribbling challenge',
+    description: 'Челлендж дриблинга (30 секунд)',
+    discipline: 'Basketball',
+  },
+  // Intellectual
+  {
+    id: 'int1',
+    name: 'Math speed test',
+    description: 'Решение математических задач на скорость (10 задач)',
+    discipline: 'Intellectual',
+  },
+  {
+    id: 'int2',
+    name: 'Puzzle solving',
+    description: 'Решение головоломки на время',
+    discipline: 'Intellectual',
+  },
+  {
+    id: 'int3',
+    name: 'Memory challenge',
+    description: 'Запоминание последовательности (20 элементов)',
+    discipline: 'Intellectual',
+  },
+  {
+    id: 'int4',
+    name: 'Logic puzzle',
+    description: 'Решение логической задачи',
+    discipline: 'Intellectual',
+  },
+  // Weightlifting
+  {
+    id: 'wl1',
+    name: '1RM Bench Press',
+    description: 'Одноповторный максимум в жиме лёжа',
+    discipline: 'Weightlifting',
+  },
+  {
+    id: 'wl2',
+    name: '1RM Squat',
+    description: 'Одноповторный максимум в приседе',
+    discipline: 'Weightlifting',
+  },
+  {
+    id: 'wl3',
+    name: '1RM Deadlift',
+    description: 'Одноповторный максимум в становой тяге',
+    discipline: 'Weightlifting',
+  },
+  {
+    id: 'wl4',
+    name: 'Max reps with 80%',
+    description: 'Максимум повторений с 80% от 1RM',
+    discipline: 'Weightlifting',
+  },
+  // Running
+  {
+    id: 'run1',
+    name: '100m sprint',
+    description: 'Спринт на 100 метров',
+    discipline: 'Running',
+  },
+  {
+    id: 'run2',
+    name: '1km time trial',
+    description: 'Забег на 1 километр на время',
+    discipline: 'Running',
+  },
+  {
+    id: 'run3',
+    name: '5km challenge',
+    description: 'Забег на 5 километров',
+    discipline: 'Running',
+  },
+  {
+    id: 'run4',
+    name: 'Endurance test',
+    description: 'Тест на выносливость (30 минут)',
+    discipline: 'Running',
+  },
+  // Yoga
+  {
+    id: 'yoga1',
+    name: 'Balance challenge',
+    description: 'Удержание баланса в сложной позе',
+    discipline: 'Yoga',
+  },
+  {
+    id: 'yoga2',
+    name: 'Flexibility test',
+    description: 'Демонстрация гибкости',
+    discipline: 'Yoga',
+  },
+  {
+    id: 'yoga3',
+    name: 'Flow sequence',
+    description: 'Выполнение последовательности асан',
+    discipline: 'Yoga',
+  },
+  {
+    id: 'yoga4',
+    name: 'Advanced pose',
+    description: 'Выполнение сложной асаны',
+    discipline: 'Yoga',
+  },
+  // MartialArts
+  {
+    id: 'ma1',
+    name: 'Punching speed',
+    description: 'Скорость ударов (30 секунд)',
+    discipline: 'MartialArts',
+  },
+  {
+    id: 'ma2',
+    name: 'Kicking technique',
+    description: 'Техника ударов ногами',
+    discipline: 'MartialArts',
+  },
+  {
+    id: 'ma3',
+    name: 'Kata performance',
+    description: 'Выполнение ката',
+    discipline: 'MartialArts',
+  },
+  {
+    id: 'ma4',
+    name: 'Combo challenge',
+    description: 'Комбинация ударов',
+    discipline: 'MartialArts',
+  },
+  // Swimming
+  {
+    id: 'swim1',
+    name: '50m freestyle',
+    description: 'Плавание вольным стилем на 50 метров',
+    discipline: 'Swimming',
+  },
+  {
+    id: 'swim2',
+    name: '100m challenge',
+    description: 'Плавание на 100 метров',
+    discipline: 'Swimming',
+  },
+  {
+    id: 'swim3',
+    name: 'Underwater distance',
+    description: 'Дистанция под водой на одном вдохе',
+    discipline: 'Swimming',
+  },
+  {
+    id: 'swim4',
+    name: 'Stroke technique',
+    description: 'Техника плавания',
+    discipline: 'Swimming',
   },
 ];

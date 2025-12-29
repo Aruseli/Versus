@@ -7,7 +7,7 @@ export const BottomNav = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  if (pathname.includes('/battle/')) return null;
+  if (pathname.includes('/battle/') || pathname.includes('/create/')) return null;
 
   const NavItem = ({ to, icon: Icon, activePaths }: { to: string; icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>; activePaths: string[] }) => {
     const isActive = activePaths.includes(pathname);
@@ -37,7 +37,10 @@ export const BottomNav = () => {
             {/* Modern Create Button */}
             <div className="-mt-8 relative group cursor-pointer">
                 <div className="absolute inset-0 bg-primary/40 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <button className="w-14 h-14 rounded-full bg-primary text-white shadow-lg shadow-primary/30 flex items-center justify-center transform group-hover:scale-105 group-active:scale-95 transition-all duration-300 relative z-10 border border-white/10">
+                <button 
+                  onClick={() => router.push('/create/discipline')}
+                  className="w-14 h-14 rounded-full bg-primary text-white shadow-lg shadow-primary/30 flex items-center justify-center transform group-hover:scale-105 group-active:scale-95 transition-all duration-300 relative z-10 border border-white/10 touch-manipulation"
+                >
                     <IconPlus size={26} strokeWidth={2.5} />
                 </button>
             </div>
